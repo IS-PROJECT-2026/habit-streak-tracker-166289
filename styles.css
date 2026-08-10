@@ -1,0 +1,523 @@
+:root {
+  /* Color */
+  --color-bg: #16211F;
+  --color-panel: #1E2C29;
+  --color-panel-raised: #24352F;
+  --color-border: #33453D;
+  --color-border-soft: #2A3A34;
+  --color-text: #EFE9DD;
+  --color-text-muted: #A9B6AC;
+  --color-text-faint: #6E8078;
+
+  --color-gold: #D9A441;
+  --color-gold-soft: #E6C27C;
+  --color-coral: #C1553D;
+  --color-sage: #7FA37A;
+  --color-sage-soft: #547F55;
+
+  /* Type */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Layout */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --max-width: 1080px;
+  --panel-padding: 28px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Signature ambient texture: faint stitched dot grid across the whole page */
+.stitch-texture {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle, rgba(217, 164, 65, 0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+a {
+  color: var(--color-gold-soft);
+}
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.site-header {
+  position: relative;
+  z-index: 1;
+  padding: 56px 24px 40px;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-sage);
+}
+
+.wordmark {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(40px, 7vw, 64px);
+  font-optical-sizing: auto;
+  letter-spacing: -0.01em;
+}
+
+.wordmark-accent {
+  color: var(--color-coral);
+}
+
+.tagline {
+  margin: 0;
+  max-width: 46ch;
+  color: var(--color-text-muted);
+  font-size: 16px;
+}
+
+/* ==========================================================================
+   Layout shell
+   ========================================================================== */
+
+.app-shell {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ==========================================================================
+   Summary badges
+   ========================================================================== */
+
+.summary-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.badge {
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.badge-value {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-gold-soft);
+}
+
+.badge-label {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   Grid + panels
+   ========================================================================== */
+
+.app-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.panel {
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--panel-padding);
+}
+
+.panel-heading {
+  margin: 0 0 18px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.panel-heading-secondary {
+  margin-top: 32px;
+}
+
+/* ==========================================================================
+   Form
+   ========================================================================== */
+
+.habit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  padding: 0;
+}
+
+.field input[type="text"] {
+  background: var(--color-panel-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 11px 13px;
+}
+
+.field input[type="text"]:focus {
+  border-color: var(--color-gold);
+}
+
+.field input[type="text"]::placeholder {
+  color: var(--color-text-faint);
+}
+
+.radio-row {
+  display: flex;
+  gap: 8px;
+}
+
+.radio-pill {
+  position: relative;
+  flex: 1;
+  text-align: center;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-panel-raised);
+  font-size: 14px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.radio-pill input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radio-pill:has(input:checked) {
+  border-color: var(--color-gold);
+  color: var(--color-text);
+  background: rgba(217, 164, 65, 0.1);
+}
+
+.btn-primary {
+  margin-top: 4px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--color-gold);
+  color: #1B1408;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: var(--color-gold-soft);
+}
+
+/* ==========================================================================
+   Habit list
+   ========================================================================== */
+
+.habit-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.habit-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-sm);
+  background: var(--color-panel-raised);
+}
+
+/* The "stitch" check button: an empty square that fills with a
+   hand-stitched X mark when a habit is completed for today. */
+.check-stitch {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-border);
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.check-stitch::before,
+.check-stitch::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 1.5px;
+  background: var(--color-gold);
+  transform-origin: center;
+  transition: width 0.15s ease;
+}
+
+.check-stitch::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.check-stitch::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.check-stitch.is-checked {
+  border-color: var(--color-gold);
+  background: rgba(217, 164, 65, 0.12);
+}
+
+.check-stitch.is-checked::before,
+.check-stitch.is-checked::after {
+  width: 65%;
+}
+
+.habit-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.habit-name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.habit-meta {
+  margin: 2px 0 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.habit-delete {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-faint);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+}
+
+.habit-delete:hover {
+  color: var(--color-coral);
+  background: rgba(193, 85, 61, 0.1);
+}
+
+.empty-state {
+  display: none;
+  margin: 8px 0 0;
+  padding: 16px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Dashboard / heatmap
+   ========================================================================== */
+
+.dashboard-heading-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.heatmap-select {
+  background: var(--color-panel-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 7px 10px;
+}
+
+.heatmap-container {
+  margin-top: 16px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.heatmap-grid {
+  display: flex;
+  gap: 3px;
+  width: max-content;
+}
+
+.heatmap-column {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* Each cell reads like a single cross-stitch square on aida cloth:
+   a small punched hole (border) that fills with thread color
+   as completion intensity increases. */
+.heatmap-cell {
+  width: 13px;
+  height: 13px;
+  border-radius: 2px;
+  border: 1px solid var(--color-border-soft);
+  background: transparent;
+}
+
+.heatmap-cell.level-1 { background: rgba(127, 163, 122, 0.35); border-color: transparent; }
+.heatmap-cell.level-2 { background: var(--color-sage-soft); border-color: transparent; }
+.heatmap-cell.level-3 { background: var(--color-gold); border-color: transparent; }
+.heatmap-cell.level-4 { background: var(--color-coral); border-color: transparent; }
+
+.heatmap-legend {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-faint);
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid var(--color-border-soft);
+}
+
+.legend-0 { background: transparent; }
+.legend-1 { background: rgba(127, 163, 122, 0.35); border-color: transparent; }
+.legend-2 { background: var(--color-sage-soft); border-color: transparent; }
+.legend-3 { background: var(--color-gold); border-color: transparent; }
+.legend-4 { background: var(--color-coral); border-color: transparent; }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.site-footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 24px;
+  color: var(--color-text-faint);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  border-top: 1px solid var(--color-border-soft);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 760px) {
+  .app-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-row {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header {
+    padding: 40px 20px 28px;
+  }
+
+  .app-shell {
+    padding: 28px 20px 60px;
+  }
+}
