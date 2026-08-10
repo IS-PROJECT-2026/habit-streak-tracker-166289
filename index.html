@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stitch — Habit & Streak Tracker</title>
+  <meta name="description" content="Track daily and weekly habits, build streaks, and see your consistency as a stitched calendar pattern.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="stitch-texture" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="eyebrow">Habit &amp; Streak Tracker</p>
+      <h1 class="wordmark">Stitch<span class="wordmark-accent">.</span></h1>
+      <p class="tagline">Every completed day is a stitch. String enough of them together and the pattern becomes the habit.</p>
+    </div>
+  </header>
+
+  <main class="app-shell">
+
+    <!-- Overall stats -->
+    <section class="summary-row" id="summaryRow" aria-label="Overall statistics">
+      <div class="badge">
+        <span class="badge-value" id="totalHabitsValue">0</span>
+        <span class="badge-label">Habits tracked</span>
+      </div>
+      <div class="badge">
+        <span class="badge-value" id="bestStreakValue">0</span>
+        <span class="badge-label">Longest streak</span>
+      </div>
+      <div class="badge">
+        <span class="badge-value" id="consistencyValue">0%</span>
+        <span class="badge-label">Consistency, 30d</span>
+      </div>
+    </section>
+
+    <div class="app-grid">
+
+      <!-- Left column: add habit + list -->
+      <section class="panel form-panel" aria-labelledby="formHeading">
+        <h2 id="formHeading" class="panel-heading">Add a habit</h2>
+
+        <form id="habitForm" class="habit-form" novalidate>
+          <label class="field">
+            <span class="field-label">Habit name</span>
+            <input
+              type="text"
+              id="habitNameInput"
+              name="habitName"
+              placeholder="Read for 20 minutes"
+              maxlength="60"
+              required
+            >
+          </label>
+
+          <fieldset class="field frequency-field">
+            <legend class="field-label">Target frequency</legend>
+            <div class="radio-row">
+              <label class="radio-pill">
+                <input type="radio" name="frequency" value="daily" checked>
+                <span>Daily</span>
+              </label>
+              <label class="radio-pill">
+                <input type="radio" name="frequency" value="weekly">
+                <span>Weekly</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="btn-primary">Start tracking</button>
+        </form>
+
+        <h2 class="panel-heading panel-heading-secondary">Your habits</h2>
+
+        <ul id="habitList" class="habit-list" aria-live="polite">
+          <!-- Habit items injected by script.js -->
+        </ul>
+
+        <p id="emptyState" class="empty-state">
+          No habits yet. Add your first one above, then mark today complete to begin a streak.
+        </p>
+      </section>
+
+      <!-- Right column: heatmap dashboard -->
+      <section class="panel dashboard-panel" aria-labelledby="dashboardHeading">
+        <div class="dashboard-heading-row">
+          <h2 id="dashboardHeading" class="panel-heading">Completion pattern</h2>
+          <select id="heatmapHabitSelect" class="heatmap-select" aria-label="Choose which habit to display">
+            <option value="all">All habits</option>
+          </select>
+        </div>
+
+        <div id="heatmapContainer" class="heatmap-container">
+          <!-- Heatmap grid injected by script.js -->
+        </div>
+
+        <div class="heatmap-legend" aria-hidden="true">
+          <span class="legend-label">Less</span>
+          <span class="legend-swatch legend-0"></span>
+          <span class="legend-swatch legend-1"></span>
+          <span class="legend-swatch legend-2"></span>
+          <span class="legend-swatch legend-3"></span>
+          <span class="legend-swatch legend-4"></span>
+          <span class="legend-label">More</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Stitch — a habit tracker built one commit at a time.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
