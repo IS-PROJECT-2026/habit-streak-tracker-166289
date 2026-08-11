@@ -90,3 +90,35 @@ habitList.addEventListener('click', (e) => {
     deleteHabit(deleteBtn.dataset.deleteId);
   }
 });
+
+//Issue 8
+function toDateStr(date) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
+function todayStr() {
+  return toDateStr(new Date());
+}
+
+function addDays(date, days) {
+  const copy = new Date(date);
+  copy.setDate(copy.getDate() + days);
+  return copy;
+}
+
+function toggleCompletion(habitId, dateStr) {
+  const habit = habitsArray.find(h => h.id === habitId);
+  if (!habit) return;
+
+  const index = habit.completions.indexOf(dateStr);
+  if (index === -1) {
+    habit.completions.push(dateStr);
+  } else {
+    habit.completions.splice(index, 1);
+  }
+  habit.completions.sort();
+  renderHabitList();
+}
