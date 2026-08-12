@@ -2,12 +2,14 @@
 let habitsArray = [];
 
 // ---------- DOM references ----------
-const habitForm = document.getElementById('habitForm');
-const habitNameInput = document.getElementById('habitNameInput');
+const habitForm = document.getElementById("habitForm");
+const habitNameInput = document.getElementById("habitNameInput");
 
 // ---------- Utilities ----------
 function generateId() {
-  return 'h_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+  return (
+    "h_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 7)
+  );
 }
 
 // ---------- Habit creation ----------
@@ -16,23 +18,32 @@ function addHabit(name, frequency) {
     id: generateId(),
     name: name.trim(),
     frequency,
-    completions: []
+    completions: [],
   });
   renderHabitList(); //
 }
 
-
 function renderHabitList() {
-  const habitList = document.getElementById('habitList');
-  habitList.innerHTML = habitsArray.map(h => `<li>${h.name} (${h.frequency})</li>`).join('');
+  const bestStreakValue = document.getElementById("bestStreakValue");
+
+  function renderSummary() {
+    totalHabitsValue.textContent = habitsArray.length;
+    const longest = habitsArray.reduce(
+      (max, h) => Math.max(max, calculateLongestStreak(h)),
+      0,
+    );
+    bestStreakValue.textContent = longest;
+  }
 }
 
 // ---------- Event listeners ----------
-habitForm.addEventListener('submit', (e) => {
+habitForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const name = habitNameInput.value.trim();
   if (!name) return;
-  const frequency = habitForm.querySelector('input[name="frequency"]:checked').value;
+  const frequency = habitForm.querySelector(
+    'input[name="frequency"]:checked',
+  ).value;
   addHabit(name, frequency);
   habitForm.reset();
   habitNameInput.focus();
@@ -40,39 +51,39 @@ habitForm.addEventListener('submit', (e) => {
 
 //Issue 7
 
-const habitList = document.getElementById('habitList');
-const emptyState = document.getElementById('emptyState');
-const totalHabitsValue = document.getElementById('totalHabitsValue');
+const habitList = document.getElementById("habitList");
+const emptyState = document.getElementById("emptyState");
+const totalHabitsValue = document.getElementById("totalHabitsValue");
 
 function deleteHabit(habitId) {
-  habitsArray = habitsArray.filter(h => h.id !== habitId);
+  habitsArray = habitsArray.filter((h) => h.id !== habitId);
   renderHabitList();
   renderSummary();
 }
 
 function escapeHtml(str) {
-  const div = document.createElement('div');
+  const div = document.createElement("div");
   div.textContent = str;
   return div.innerHTML;
 }
 
 function renderHabitList() {
-  habitList.innerHTML = '';
+  habitList.innerHTML = "";
 
   if (habitsArray.length === 0) {
-    emptyState.style.display = 'block';
+    emptyState.style.display = "block";
     return;
   }
-  emptyState.style.display = 'none';
+  emptyState.style.display = "none";
 
   habitsArray.forEach((habit) => {
-    const item = document.createElement('li');
-    item.className = 'habit-item';
+    const item = document.createElement("li");
+    item.className = "habit-item";
     item.innerHTML = `
       <button class="check-stitch" data-habit-id="${habit.id}" aria-label="Mark ${escapeHtml(habit.name)} complete for today"></button>
       <div class="habit-info">
         <p class="habit-name">${escapeHtml(habit.name)}</p>
-        <p class="habit-meta">${habit.frequency === 'daily' ? 'Daily' : 'Weekly'}</p>
+        <p class="habit-meta">${habit.frequency === "daily" ? "Daily" : "Weekly"}</p>
       </div>
       <button class="habit-delete" data-delete-id="${habit.id}" aria-label="Delete ${escapeHtml(habit.name)}">&times;</button>
     `;
@@ -84,8 +95,8 @@ function renderSummary() {
   totalHabitsValue.textContent = habitsArray.length;
 }
 
-habitList.addEventListener('click', (e) => {
-  const deleteBtn = e.target.closest('.habit-delete');
+habitList.addEventListener("click", (e) => {
+  const deleteBtn = e.target.closest(".habit-delete");
   if (deleteBtn) {
     deleteHabit(deleteBtn.dataset.deleteId);
   }
@@ -94,8 +105,8 @@ habitList.addEventListener('click', (e) => {
 //Issue 8
 function toDateStr(date) {
   const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, '0');
-  const d = String(date.getDate()).padStart(2, '0');
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
   return `${y}-${m}-${d}`;
 }
 
@@ -110,7 +121,7 @@ function addDays(date, days) {
 }
 
 function toggleCompletion(habitId, dateStr) {
-  const habit = habitsArray.find(h => h.id === habitId);
+  const habit = habitsArray.find((h) => h.id === habitId);
   if (!habit) return;
 
   const index = habit.completions.indexOf(dateStr);
@@ -121,4 +132,29 @@ function toggleCompletion(habitId, dateStr) {
   }
   habit.completions.sort();
   renderHabitList();
+}
+
+function calculateConsistency(habit, windowDays = 30) {
+  if (habit.completions.length === 0) return 0;
+  const today = new Date();
+  const windowStart = addDays(today, -(windowDays - 1));
+
+  if (habit.frequency === "daily") {
+    let completedCount = 0;
+    for (let i = 0; i < windowDays; i++) {
+      if (habit.completions.includes(toDateStr(addDays(windowStart, i))))
+        completedCount++;
+    }
+    return Math.round((completedCount / windowDays) * 100);
+  }
+
+  const expectedWeeks = new Set();
+  for (let i = 0; i < windowDays; i++)
+    expectedWeeks.add(getISOWeekKey(addDays(windowStart, i)));
+  const completedWeeksInWindow = new Set(
+    habit.completions
+      .filter((d) => new Date(d) >= windowStart)
+      .map((d) => getISOWeekKey(new Date(d))),
+  );
+  return Math.round((completedWeeksInWindow.size / expectedWeeks.size) * 100);
 }
