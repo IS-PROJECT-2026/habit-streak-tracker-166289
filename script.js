@@ -196,3 +196,20 @@ function calculateConsistency(habit, windowDays = 30) {
   );
   return Math.round((completedWeeksInWindow.size / expectedWeeks.size) * 100);
 }
+
+const STORAGE_KEY = 'habitData';
+
+function saveToLocal() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(habitsArray));
+}
+
+function loadFromLocal() {
+  const data = localStorage.getItem(STORAGE_KEY);
+  if (data) {
+    habitsArray = JSON.parse(data);
+  }
+}
+
+loadFromLocal();
+renderHabitList();
+renderSummary();
