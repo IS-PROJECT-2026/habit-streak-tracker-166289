@@ -26,13 +26,26 @@ function addHabit(name, frequency) {
 function renderHabitList() {
   const bestStreakValue = document.getElementById("bestStreakValue");
 
+  const consistencyValue = document.getElementById("consistencyValue");
+
   function renderSummary() {
     totalHabitsValue.textContent = habitsArray.length;
+
     const longest = habitsArray.reduce(
       (max, h) => Math.max(max, calculateLongestStreak(h)),
       0,
     );
     bestStreakValue.textContent = longest;
+
+    if (habitsArray.length === 0) {
+      consistencyValue.textContent = "0%";
+      return;
+    }
+    const avgConsistency = Math.round(
+      habitsArray.reduce((sum, h) => sum + calculateConsistency(h), 0) /
+        habitsArray.length,
+    );
+    consistencyValue.textContent = `${avgConsistency}%`;
   }
 }
 
@@ -132,6 +145,31 @@ function toggleCompletion(habitId, dateStr) {
   }
   habit.completions.sort();
   renderHabitList();
+}
+
+function calculateConsistency(habit, windowDays = 30) {
+  if (habit.completions.length === 0) return 0;
+  const today = new Date();
+  const windowStart = addDays(today, -(windowDays - 1));
+
+  if (habit.frequency === "daily") {
+    let completedCount = 0;
+    for (let i = 0; i < windowDays; i++) {
+      if (habit.completions.includes(toDateStr(addDays(windowStart, i))))
+        completedCount++;
+    }
+    return Math.round((completedCount / windowDays) * 100);
+  }
+
+  const expectedWeeks = new Set();
+  for (let i = 0; i < windowDays; i++)
+    expectedWeeks.add(getISOWeekKey(addDays(windowStart, i)));
+  const completedWeeksInWindow = new Set(
+    habit.completions
+      .filter((d) => new Date(d) >= windowStart)
+      .map((d) => getISOWeekKey(new Date(d))),
+  );
+  return Math.round((completedWeeksInWindow.size / expectedWeeks.size) * 100);
 }
 
 function calculateConsistency(habit, windowDays = 30) {
