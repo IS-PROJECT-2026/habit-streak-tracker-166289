@@ -600,3 +600,25 @@ button {
 .legend-2 { background: var(--color-sage-soft); border-color: transparent; }
 .legend-3 { background: var(--color-gold); border-color: transparent; }
 .legend-4 { background: var(--color-coral); border-color: transparent; }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 760px) {
+  .app-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-row {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header {
+    padding: 40px 20px 28px;
+  }
+
+  .app-shell {
+    padding: 28px 20px 60px;
+  }
+}
