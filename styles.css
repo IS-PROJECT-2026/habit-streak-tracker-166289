@@ -521,3 +521,82 @@ button {
     padding: 28px 20px 60px;
   }
 }
+
+/* ==========================================================================
+   Dashboard / heatmap
+   ========================================================================== */
+
+.dashboard-heading-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.heatmap-select {
+  background: var(--color-panel-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 7px 10px;
+}
+
+.heatmap-container {
+  margin-top: 16px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.heatmap-grid {
+  display: flex;
+  gap: 3px;
+  width: max-content;
+}
+
+.heatmap-column {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.heatmap-cell {
+  width: 13px;
+  height: 13px;
+  border-radius: 2px;
+  border: 1px solid var(--color-border-soft);
+  background: transparent;
+}
+
+.heatmap-cell.level-1 { background: rgba(127, 163, 122, 0.35); border-color: transparent; }
+.heatmap-cell.level-2 { background: var(--color-sage-soft); border-color: transparent; }
+.heatmap-cell.level-3 { background: var(--color-gold); border-color: transparent; }
+.heatmap-cell.level-4 { background: var(--color-coral); border-color: transparent; }
+
+.heatmap-legend {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-faint);
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid var(--color-border-soft);
+}
+
+.legend-0 { background: transparent; }
+.legend-1 { background: rgba(127, 163, 122, 0.35); border-color: transparent; }
+.legend-2 { background: var(--color-sage-soft); border-color: transparent; }
+.legend-3 { background: var(--color-gold); border-color: transparent; }
+.legend-4 { background: var(--color-coral); border-color: transparent; }
