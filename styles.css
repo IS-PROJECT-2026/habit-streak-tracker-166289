@@ -1,19 +1,20 @@
 :root {
   /* Color */
-  --color-bg: #0f1614;
-  --color-panel: #1a2420;
-  --color-panel-raised: #212d28;
-  --color-border: #2d3d35;
-  --color-border-soft: #233029;
-  --color-text: #f5f1e8;
-  --color-text-muted: #b0b8b1;
-  --color-text-faint: #7a8a81;
+  --color-bg: #0d1511;
+  --color-panel: #151f1a;
+  --color-panel-raised: #1d2b24;
+  --color-border: #2a3a30;
+  --color-border-soft: #1f2d27;
+  --color-text: #f8f6f1;
+  --color-text-muted: #a8b4ac;
+  --color-text-faint: #738079;
 
-  --color-gold: #e8b85c;
-  --color-gold-soft: #f0c477;
-  --color-coral: #d4644a;
-  --color-sage: #88a77f;
-  --color-sage-soft: #5f8660;
+  --color-gold: #f0ca60;
+  --color-gold-soft: #f5d88a;
+  --color-gold-dark: #d4a940;
+  --color-coral: #de6a52;
+  --color-sage: #8eb88f;
+  --color-sage-soft: #68905f;
 
   /* Type */
   --font-display: 'Fraunces', Georgia, serif;
@@ -21,14 +22,15 @@
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
 
   /* Layout */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --max-width: 1080px;
-  --panel-padding: 32px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --max-width: 1140px;
+  --panel-padding: 36px;
 
   /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 
 * {
@@ -41,10 +43,10 @@ html {
 
 body {
   margin: 0;
-  background: linear-gradient(135deg, var(--color-bg) 0%, #1a2420 100%);
+  background: linear-gradient(135deg, var(--color-bg) 0%, #12231a 100%);
   color: var(--color-text);
   font-family: var(--font-body);
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   position: relative;
   min-height: 100vh;
@@ -89,11 +91,11 @@ button {
 .site-header {
   position: relative;
   z-index: 1;
-  padding: 64px 24px 48px;
+  padding: 72px 24px 56px;
   border-bottom: 1px solid var(--color-border-soft);
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 100%);
-  -webkit-backdrop-filter: blur(0.5px);
-  backdrop-filter: blur(0.5px);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.15) 50%, transparent 100%);
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(1px);
 }
 
 .header-inner {
@@ -111,13 +113,13 @@ button {
 }
 
 .wordmark {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(48px, 8vw, 72px);
+  font-weight: 700;
+  font-size: clamp(52px, 9vw, 80px);
   font-optical-sizing: auto;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  letter-spacing: -0.025em;
+  line-height: 1;
 }
 
 .wordmark-accent {
@@ -158,23 +160,23 @@ button {
   background: linear-gradient(135deg, var(--color-panel) 0%, var(--color-panel-raised) 100%);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 24px 28px;
+  padding: 28px 32px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .badge:hover {
-  border-color: var(--color-gold);
-  box-shadow: 0 8px 24px rgba(232, 184, 92, 0.1);
-  transform: translateY(-2px);
+  border-color: var(--color-gold-soft);
+  box-shadow: 0 12px 32px rgba(240, 202, 96, 0.15);
+  transform: translateY(-4px);
 }
 
 .badge-value {
   font-family: var(--font-mono);
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 700;
   color: var(--color-gold-soft);
   letter-spacing: -0.01em;
@@ -191,8 +193,8 @@ button {
 
 .app-grid {
   display: grid;
-  grid-template-columns: 400px 1fr;
-  gap: 28px;
+  grid-template-columns: 420px 1fr;
+  gap: 32px;
   align-items: start;
 }
 
@@ -202,14 +204,19 @@ button {
   border-radius: var(--radius-md);
   padding: var(--panel-padding);
   box-shadow: var(--shadow-md);
+  transition: box-shadow 0.3s ease;
+}
+
+.panel:hover {
+  box-shadow: var(--shadow-lg);
 }
 
 .panel-heading {
-  margin: 0 0 20px;
+  margin: 0 0 24px;
   font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
 }
 
 .panel-heading-secondary {
@@ -251,20 +258,20 @@ button {
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: 15px;
-  padding: 12px 14px;
+  padding: 13px 15px;
   transition: all 0.2s ease;
 }
 
 .field input[type="text"]:hover {
   border-color: var(--color-border);
-  background: #2a3631;
+  background: #24342d;
 }
 
 .field input[type="text"]:focus {
-  border-color: var(--color-gold);
+  border-color: var(--color-gold-soft);
   outline: none;
   background: var(--color-panel-raised);
-  box-shadow: 0 0 0 3px rgba(232, 184, 92, 0.1);
+  box-shadow: 0 0 0 4px rgba(240, 202, 96, 0.12);
 }
 
 .field input[type="text"]::placeholder {
@@ -280,7 +287,7 @@ button {
   position: relative;
   flex: 1;
   text-align: center;
-  padding: 11px 14px;
+  padding: 12px 16px;
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-sm);
   background: var(--color-panel-raised);
@@ -292,7 +299,7 @@ button {
 
 .radio-pill:hover {
   border-color: var(--color-border);
-  background: #2a3631;
+  background: #24342d;
 }
 
 .radio-pill input {
@@ -302,34 +309,35 @@ button {
 }
 
 .radio-pill:has(input:checked) {
-  border-color: var(--color-gold);
+  border-color: var(--color-gold-soft);
   color: var(--color-gold-soft);
-  background: rgba(232, 184, 92, 0.15);
+  background: rgba(240, 202, 96, 0.18);
 }
 
 .btn-primary {
-  margin-top: 6px;
-  padding: 13px 18px;
+  margin-top: 8px;
+  padding: 14px 24px;
   border: none;
   border-radius: var(--radius-sm);
   background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-soft) 100%);
-  color: #0f1614;
+  color: #0d1511;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: 0.03em;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(232, 184, 92, 0.25);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 6px 20px rgba(240, 202, 96, 0.3);
+  width: 100%;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(232, 184, 92, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(240, 202, 96, 0.4);
 }
 
 .btn-primary:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(232, 184, 92, 0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(240, 202, 96, 0.25);
 }
 
 /* ==========================================================================
@@ -348,8 +356,8 @@ button {
 .habit-item {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 14px 16px;
+  gap: 16px;
+  padding: 16px 18px;
   border: 1px solid var(--color-border-soft);
   border-radius: var(--radius-sm);
   background: var(--color-panel-raised);
@@ -359,25 +367,27 @@ button {
 .habit-item:hover {
   border-color: var(--color-border);
   background: linear-gradient(135deg, var(--color-panel-raised) 0%, #2d3d35 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* The "stitch" check button: an empty square that fills with a
    hand-stitched X mark when a habit is completed for today. */
 .check-stitch {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-sm);
-  border: 1.5px solid var(--color-border);
+  border: 2px solid var(--color-border);
   background: transparent;
   cursor: pointer;
   position: relative;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .check-stitch:hover {
-  border-color: var(--color-gold);
-  background: rgba(232, 184, 92, 0.05);
+  border-color: var(--color-gold-soft);
+  background: rgba(240, 202, 96, 0.08);
+  box-shadow: 0 0 12px rgba(240, 202, 96, 0.15);
 }
 
 .check-stitch::before,
@@ -387,10 +397,10 @@ button {
   top: 50%;
   left: 50%;
   width: 0;
-  height: 1.5px;
-  background: var(--color-gold);
+  height: 2px;
+  background: var(--color-gold-soft);
   transform-origin: center;
-  transition: width 0.2s ease;
+  transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .check-stitch::before {
@@ -402,13 +412,14 @@ button {
 }
 
 .check-stitch.is-checked {
-  border-color: var(--color-gold);
-  background: rgba(232, 184, 92, 0.2);
+  border-color: var(--color-gold-soft);
+  background: rgba(240, 202, 96, 0.22);
+  box-shadow: 0 0 16px rgba(240, 202, 96, 0.2);
 }
 
 .check-stitch.is-checked::before,
 .check-stitch.is-checked::after {
-  width: 65%;
+  width: 70%;
 }
 
 .habit-info {
@@ -434,8 +445,8 @@ button {
 
 .habit-delete {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border: none;
   background: transparent;
   color: var(--color-text-faint);
@@ -448,7 +459,8 @@ button {
 
 .habit-delete:hover {
   color: var(--color-coral);
-  background: rgba(212, 100, 74, 0.15);
+  background: rgba(222, 106, 82, 0.18);
+  box-shadow: 0 0 12px rgba(222, 106, 82, 0.15);
 }
 
 .empty-state {
@@ -482,20 +494,20 @@ button {
   color: var(--color-text);
   font-family: var(--font-mono);
   font-size: 12px;
-  padding: 8px 12px;
+  padding: 9px 14px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .heatmap-select:hover {
-  border-color: var(--color-gold);
-  background: #2a3631;
+  border-color: var(--color-gold-soft);
+  background: #24342d;
 }
 
 .heatmap-select:focus {
   outline: none;
-  border-color: var(--color-gold);
-  box-shadow: 0 0 0 3px rgba(232, 184, 92, 0.1);
+  border-color: var(--color-gold-soft);
+  box-shadow: 0 0 0 4px rgba(240, 202, 96, 0.12);
 }
 
 .heatmap-container {
@@ -520,20 +532,21 @@ button {
    a small punched hole (border) that fills with thread color
    as completion intensity increases. */
 .heatmap-cell {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   border-radius: 2px;
   border: 1px solid var(--color-border-soft);
   background: transparent;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .heatmap-cell:hover {
   border-color: var(--color-border);
+  transform: scale(1.1);
 }
 
 .heatmap-cell.level-1 {
-  background: rgba(136, 167, 127, 0.4);
+  background: rgba(136, 167, 127, 0.35);
   border-color: transparent;
 }
 
@@ -566,8 +579,8 @@ button {
 }
 
 .legend-swatch {
-  width: 13px;
-  height: 13px;
+  width: 15px;
+  height: 15px;
   border-radius: 2px;
   border: 1px solid var(--color-border-soft);
 }
