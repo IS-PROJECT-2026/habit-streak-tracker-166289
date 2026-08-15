@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stitch — Habit & Streak Tracker</title>
-  <meta name="description" content="Track daily and weekly habits, build streaks, and see your consistency as a stitched calendar pattern.">
+  <meta name="description"
+    content="Track daily and weekly habits, build streaks, and see your consistency as a stitched calendar pattern.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
   <div class="stitch-texture" aria-hidden="true"></div>
@@ -19,8 +24,9 @@
   <header class="site-header">
     <div class="header-inner">
       <p class="eyebrow">Habit &amp; Streak Tracker</p>
-      <h1 class="wordmark">Stitch<span class="wordmark-accent">.</span></h1>
-      <p class="tagline">Every completed day is a stitch. String enough of them together and the pattern becomes the habit.</p>
+      <h1 class="wordmark">Habit Stitch<span class="wordmark-accent">.</span></h1>
+      <p class="tagline">Every completed day is a stitch. String enough of them together and the pattern becomes the
+        habit.</p>
     </div>
   </header>
 
@@ -51,14 +57,8 @@
         <form id="habitForm" class="habit-form" novalidate>
           <label class="field">
             <span class="field-label">Habit name</span>
-            <input
-              type="text"
-              id="habitNameInput"
-              name="habitName"
-              placeholder="Read for 20 minutes"
-              maxlength="60"
-              required
-            >
+            <input type="text" id="habitNameInput" name="habitName" placeholder="Read for 20 minutes" maxlength="60"
+              required>
           </label>
 
           <fieldset class="field frequency-field">
@@ -122,4 +122,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
