@@ -50,44 +50,74 @@
 
     <div class="app-grid">
 
-      <!-- Left column: add habit + list -->
-      <section class="panel form-panel" aria-labelledby="formHeading">
-        <h2 id="formHeading" class="panel-heading">Add a habit</h2>
-
-        <form id="habitForm" class="habit-form" novalidate>
-          <label class="field">
-            <span class="field-label">Habit name</span>
-            <input type="text" id="habitNameInput" name="habitName" placeholder="Read for 20 minutes" maxlength="60"
-              required>
-          </label>
-
-          <fieldset class="field frequency-field">
-            <legend class="field-label">Target frequency</legend>
-            <div class="radio-row">
-              <label class="radio-pill">
-                <input type="radio" name="frequency" value="daily" checked>
-                <span>Daily</span>
-              </label>
-              <label class="radio-pill">
-                <input type="radio" name="frequency" value="weekly">
-                <span>Weekly</span>
-              </label>
+      <!-- Left column: add habit + calendar + list -->
+      <div class="left-column">
+        <!-- Calendar section -->
+        <section class="panel calendar-panel" aria-labelledby="calendarHeading">
+          <div class="calendar-header">
+            <h2 id="calendarHeading" class="panel-heading">Calendar</h2>
+            <div class="calendar-nav">
+              <button id="prevMonthBtn" type="button" class="calendar-nav-btn"
+                aria-label="Previous month">&larr;</button>
+              <span id="currentMonthYear" class="calendar-month-year"></span>
+              <button id="nextMonthBtn" type="button" class="calendar-nav-btn" aria-label="Next month">&rarr;</button>
             </div>
-          </fieldset>
+          </div>
 
-          <button type="submit" class="btn-primary">Start tracking</button>
-        </form>
+          <div class="calendar-weekdays">
+            <div class="weekday-label">Sun</div>
+            <div class="weekday-label">Mon</div>
+            <div class="weekday-label">Tue</div>
+            <div class="weekday-label">Wed</div>
+            <div class="weekday-label">Thu</div>
+            <div class="weekday-label">Fri</div>
+            <div class="weekday-label">Sat</div>
+          </div>
 
-        <h2 class="panel-heading panel-heading-secondary">Your habits</h2>
+          <div id="calendarGrid" class="calendar-grid">
+            <!-- Calendar days injected by script.js -->
+          </div>
+        </section>
 
-        <ul id="habitList" class="habit-list" aria-live="polite">
-          <!-- Habit items injected by script.js -->
-        </ul>
+        <!-- Add habit section -->
+        <section class="panel form-panel" aria-labelledby="formHeading">
+          <h2 id="formHeading" class="panel-heading">Add a habit</h2>
 
-        <p id="emptyState" class="empty-state">
-          No habits yet. Add your first one above, then mark today complete to begin a streak.
-        </p>
-      </section>
+          <form id="habitForm" class="habit-form" novalidate>
+            <label class="field">
+              <span class="field-label">Habit name</span>
+              <input type="text" id="habitNameInput" name="habitName" placeholder="Read for 20 minutes" maxlength="60"
+                required>
+            </label>
+
+            <fieldset class="field frequency-field">
+              <legend class="field-label">Target frequency</legend>
+              <div class="radio-row">
+                <label class="radio-pill">
+                  <input type="radio" name="frequency" value="daily" checked aria-label="Daily frequency">
+                  <span>Daily</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="frequency" value="weekly" aria-label="Weekly frequency">
+                  <span>Weekly</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <button type="submit" class="btn-primary">Start tracking</button>
+          </form>
+
+          <h2 class="panel-heading panel-heading-secondary">Your habits</h2>
+
+          <ul id="habitList" class="habit-list" aria-live="polite">
+            <!-- Habit items injected by script.js -->
+          </ul>
+
+          <p id="emptyState" class="empty-state">
+            No habits yet. Add your first one above, then mark today complete to begin a streak.
+          </p>
+        </section>
+      </div>
 
       <!-- Right column: heatmap dashboard -->
       <section class="panel dashboard-panel" aria-labelledby="dashboardHeading">
@@ -102,14 +132,30 @@
           <!-- Heatmap grid injected by script.js -->
         </div>
 
-        <div class="heatmap-legend" aria-hidden="true">
-          <span class="legend-label">Less</span>
-          <span class="legend-swatch legend-0"></span>
-          <span class="legend-swatch legend-1"></span>
-          <span class="legend-swatch legend-2"></span>
-          <span class="legend-swatch legend-3"></span>
-          <span class="legend-swatch legend-4"></span>
-          <span class="legend-label">More</span>
+        <div class="heatmap-legend-section">
+          <p class="legend-title">Completion intensity</p>
+          <div class="heatmap-legend">
+            <div class="legend-item">
+              <span class="legend-swatch legend-0"></span>
+              <span class="legend-text">No completion</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-swatch legend-1"></span>
+              <span class="legend-text">1 habit</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-swatch legend-2"></span>
+              <span class="legend-text">2 habits</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-swatch legend-3"></span>
+              <span class="legend-text">3 habits</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-swatch legend-4"></span>
+              <span class="legend-text">4+ habits</span>
+            </div>
+          </div>
         </div>
       </section>
 
