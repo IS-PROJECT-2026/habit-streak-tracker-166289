@@ -1,4 +1,4 @@
-# Project Submission Report
+<img width="1715" height="832" alt="image" src="https://github.com/user-attachments/assets/907b4228-0018-4128-903f-41e92a31d2cf" /><img width="1590" height="907" alt="image" src="https://github.com/user-attachments/assets/1800d1c3-f574-426d-95b3-cce194d5a845" /><img width="678" height="502" alt="image" src="https://github.com/user-attachments/assets/ea65a058-29a8-4f82-9f76-bed35dd90cd1" /># Project Submission Report
 
 ## 1. Student Details
 
@@ -66,31 +66,42 @@ Demonstrate your workflow mechanics by embedding your screenshots below.
 ### A. Milestones and Issues
 *Provide a screenshot showing your active milestone(s) and the granular tracking issues linked directly to them.*
 
-<img width="1112" height="366" alt="image" src="https://github.com/user-attachments/assets/da0969e4-a5c0-42c8-b9b0-ef5a456b6fda" />
+#### Initial screenshot before linking issues to the 
 
+<img width="678" height="502" alt="image" src="https://github.com/user-attachments/assets/12b299b4-01f8-440e-9b49-3485df6ffe41" />
 
-* **Caption:** [Write a brief sentence describing your milestones here]
+* **Caption:** Three milestones — Foundation, Habit Tracking Features, and Refinement & Submission, each with granular, individually tracked issues linked directly to them, showing 100% completion for each.
 
 ### B. Project Board
 *Provide a screenshot of your GitHub Project Board with your issues organized dynamically across columns (To Do, In Progress, Done).*
+<img width="778" height="631" alt="image" src="https://github.com/user-attachments/assets/1ac181a8-6e2a-469d-b973-7df421cf8c14" />
+* **Caption:** [Complete Board before beginning the tasks]
 
+<img width="1432" height="683" alt="image" src="https://github.com/user-attachments/assets/b0512c84-7d22-46a1-9310-0c9118f6b52a" />
+* **Caption:** [Day 1 Board - Before beginning the tasks]
 
-
-* **Caption:** [Write a brief sentence describing your board state here]
+<img width="1051" height="910" alt="image" src="https://github.com/user-attachments/assets/46f84e06-b3b4-4ede-9ef8-96b4cdaf4863" />
+* **Caption:** [Final board after completing all the issues and milestones]
 
 ### C. Branching Architecture
 *Provide a screenshot showing your local or remote Git branch list, highlighting your use of conventional, issue-linked naming patterns (e.g., `feat/`, `fix/`, `style/`).*
 
-[PASTE YOUR BRANCHING SCREENSHOT DIRECTLY HERE]
+The project followed a feature-branch workflow where work was completed on separate issue-linked branches and merged into main through pull requests. As part of repository maintenance, merged branches were deleted after successful integration. Therefore, the branch names are demonstrated through the closed pull request history, which preserves evidence of the branching strategy and naming conventions used throughout the project.
 
-* **Caption:** [Write a brief sentence describing your branch list here]
+<img width="907" height="191" alt="image" src="https://github.com/user-attachments/assets/05b01098-7a82-4303-a959-475c0ec150b1" />
+
+<img width="1136" height="792" alt="image" src="https://github.com/user-attachments/assets/3f1a9c32-b3b3-4e25-a96e-8562b4cd7a4c" />
+
+<img width="886" height="668" alt="image" src="https://github.com/user-attachments/assets/ec5613e3-a799-4bc8-85ee-631c5d928fe3" />
+
+* **Caption:** [Closed pull requests showing the project's branching architecture and conventional issue-linked naming patterns, including feat/, fix/, style/, docs/, refactor/, and chore/ branches that were merged into main and subsequently deleted]
 
 ### D. Pull Requests & Traceability
 *Provide a screenshot of a completed or open Pull Request (PR) on GitHub that clearly shows it is linked to a related development issue.*
 
-[PASTE YOUR PULL REQUEST SCREENSHOT DIRECTLY HERE]
+<img width="938" height="901" alt="image" src="https://github.com/user-attachments/assets/f6142278-43cc-41b2-a65f-66c79a45c302" />
 
-* **Caption:** [Write a brief sentence describing your PR and what issue it closes]
+* **Caption:** [Pull request successfully merged into main and linked directly to Issue #16 (Complete submission.md), demonstrating traceability between project planning, implementation, and integration activities.] 
 
 ---
 
@@ -104,55 +115,62 @@ You must engineer **three merge conflicts**, each triggered by a **different cau
 
 ### Conflict 1 — Full Chronology
 
-**What cause did you use?** [Name the type of conflict cause from the lecture]
+**What cause did you use?** Same-line content conflict — two branches independently modified the same `<h1>` element in `index.html`.
 
 #### Step 1: Generating the Clash
 *Screenshot showing the merge attempt and the conflict warning.*
 
-[PASTE SCREENSHOT OF ATTEMPTED MERGE / TERMINAL WARNING HERE]
+<img width="1402" height="328" alt="image" src="https://github.com/user-attachments/assets/b397ec55-41f3-4a64-b312-2d95810cf372" />
 
-* **Caption:** [Describe which two branches collided and the warning received]
 
+* **Caption:** Branches `fix/15-conflict-demo-a` and `fix/15-conflict-demo-b` modified the same `<h1>` line independently. Merging `main` into `fix/15-conflict-demo-b` produced a content conflict that required manual resolution.
 #### Step 2: Inside the Code Editor (Conflict Markers)
 *Screenshot showing the raw, unresolved conflict markers (`<<<<<<< HEAD`, `=======`, `>>>>>>>`) in your editor.*
 
-[PASTE SCREENSHOT OF RAW CONFLICT MARKERS HERE]
+<img width="1406" height="458" alt="image" src="https://github.com/user-attachments/assets/27e68588-0f97-4ad7-b35b-022ba808ff6c" />
 
-* **Caption:** [Explain what caused the dispute and your reasoning for the final version]
+* **Caption:** Raw Git conflict markers showing two competing versions of the `<h1>` wordmark. The conflict was resolved by selecting a single final title and removing the conflict markers.
 
 #### Step 3: Resolution & Clean Merge
 *Screenshot of your clean Git history or completed PR showing the conflict was resolved and merged.*
 
-[PASTE SCREENSHOT OF CLEAN RESOLUTION HERE]
+<img width="1622" height="902" alt="image" src="https://github.com/user-attachments/assets/40ed0d1f-d165-409a-bb3d-828a829c75af" />
 
-* **Caption:** [Describe the final state after resolution]
+
+* **Caption:** After resolving the content conflict, the changes were committed (`fix(conflict): resolve merge collision`), linked to Issue #15, and successfully merged into `main`. The pull request was closed and the feature branch was deleted after integration.
 
 ---
 
 ### Conflict 2 — Different Cause
 
-**What cause did you use?** [Name the type of conflict cause — must be different from Conflict 1]
+**What cause did you use?** Add/add conflict — two branches independently created a file named `NOTES.md` with different contents.
 
-**Why does this cause trigger a conflict?** [1–2 sentences explaining the mechanism]
+**Why does this cause trigger a conflict?** Two branches independently created `NOTES.md` with different contents. Because both branches added the file without a common version to reconcile, Git produced an add/add conflict requiring manual resolution.
 
-[PASTE SCREENSHOT OF CONFLICT MARKERS FOR CONFLICT 2 HERE]
+#### Step 1: Conflict Markers
+<img width="1269" height="179" alt="image" src="https://github.com/user-attachments/assets/73adabb1-6532-42b7-9b88-4ddef4bff08f" />
 
-* **Caption:** [Brief description of the conflicting branches and file]
+* **Caption:** Git inserted conflict markers into `NOTES.md` after detecting that branches `fix/19-conflict2-addadd-a` and `fix/19-conflict2-addadd-b` had both created the same file with different contents.
 
+#### Step 2: Terminal Evidence
+<img width="1533" height="133" alt="image" src="https://github.com/user-attachments/assets/9975c600-e97e-47d6-9b48-2d21fd7cc2da" />
+
+* **Caption:** Terminal output confirming the add/add conflict. Git could not automatically determine which version of `NOTES.md` should be retained and therefore required manual resolution.
 ---
 
-### Conflict 3 — Different Cause
+### Conflict 3 — Modify/Delete Conflict
 
-**What cause did you use?** [Name the type of conflict cause — must be different from Conflicts 1 and 2]
+**What cause did you use?**  
+Modify/delete conflict — one branch deleted a file while another branch modified the same file.
 
-**Why does this cause trigger a conflict?** [1–2 sentences explaining the mechanism]
+**Why does this cause trigger a conflict?**  
+One branch removed `docs/legacy-notes.md` while another branch updated its contents. Because Git could not automatically determine whether the file should be retained or removed, it generated a modify/delete conflict requiring manual intervention.
 
-[PASTE SCREENSHOT OF CONFLICT MARKERS FOR CONFLICT 3 HERE]
+#### Evidence
 
-* **Caption:** [Brief description of the conflicting branches and file]
+<img width="1526" height="132" alt="image" src="https://github.com/user-attachments/assets/2e2b1b7d-0e85-499e-84f8-28864eff43f2" />
 
----
-##
+* **Caption:** Branch `fix/20-conflict3-deletemodify-a` deleted `docs/legacy-notes.md` while `fix/20-conflict3-deletemodify-b` modified it. Git flagged the file as a modify/delete conflict until a manual resolution was performed.
 ## 6. Feedback & Evaluation
 
 To help improve this course for future engineering cohorts, please take 2 minutes to fill out the anonymous feedback form. Your honest review helps shape how this program is taught next semester!
