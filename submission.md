@@ -1,4 +1,4 @@
-<img width="1715" height="832" alt="image" src="https://github.com/user-attachments/assets/907b4228-0018-4128-903f-41e92a31d2cf" /><img width="1590" height="907" alt="image" src="https://github.com/user-attachments/assets/1800d1c3-f574-426d-95b3-cce194d5a845" /><img width="678" height="502" alt="image" src="https://github.com/user-attachments/assets/ea65a058-29a8-4f82-9f76-bed35dd90cd1" /># Project Submission Report
+# Project Submission Report
 
 ## 1. Student Details
 
@@ -25,7 +25,7 @@
 Paste the URL of the commit in your history that you think best demonstrates clean conventional commit practice (good type tag, clear subject, meaningful body or footer).
 
 - **Commit URL:** [https://github.com/IS-PROJECT-2026/habit-streak-tracker-166289/commit/5b7c87276abc2eb79239f8da118f452678ab2882]
-- **Why this one?** his commit follows the Conventional Commits format and maintains the imperative mood throughout both the subject and body. It also represents a meaningful milestone in the project by consolidating refactoring, testing, and final application improvements before deployment. The message is concise, action-oriented, and clearly communicates the purpose of the change.
+- **Why this one?** This commit follows the Conventional Commits format and maintains the imperative tense throughout both the subject and body. It also represents a meaningful milestone in the project by combining refactoring, testing, and final application improvements before deployment. The message is concise, action-oriented, and clearly communicates the purpose of the change.
 
 ### B. A Mistake or Struggle
 
@@ -36,7 +36,6 @@ Link to a commit, PR, or issue where something went wrong — a bad commit messa
 conflict title a - [https://github.com/IS-PROJECT-2026/habit-streak-tracker-166289/pull/36]
 
 conflict title b - [https://github.com/IS-PROJECT-2026/habit-streak-tracker-166289/pull/35]
-
 
 - **What happened and how did you recover?** During the merge-conflict exercise, I created the original conflict branches (fix/15-conflict-title-a and fix/15-conflict-title-b) but opened and closed the pull requests in an incorrect sequence. This left the branches in a state that made it difficult to complete the required conflict workflow. Instead of forcing a repair on the original branches, I created new branches (fix/15-conflict-demo-a and fix/15-conflict-demo-b) from a clean state and repeated the exercise following the correct order. This allowed me to generate the conflict successfully, capture the required evidence, resolve the conflict manually, and complete the merge process cleanly.
 
@@ -66,22 +65,24 @@ Demonstrate your workflow mechanics by embedding your screenshots below.
 ### A. Milestones and Issues
 *Provide a screenshot showing your active milestone(s) and the granular tracking issues linked directly to them.*
 
-#### Initial screenshot before linking issues to the 
-
 <img width="678" height="502" alt="image" src="https://github.com/user-attachments/assets/12b299b4-01f8-440e-9b49-3485df6ffe41" />
 
-* **Caption:** Three milestones — Foundation, Habit Tracking Features, and Refinement & Submission, each with granular, individually tracked issues linked directly to them, showing 100% completion for each.
+* **Caption:** Three milestones - Foundation, Habit Tracking Features, and Refinement & Submission, each with granular, individually tracked issues linked directly to them, showing 100% completion for each.
 
 ### B. Project Board
 *Provide a screenshot of your GitHub Project Board with your issues organized dynamically across columns (To Do, In Progress, Done).*
+
 <img width="778" height="631" alt="image" src="https://github.com/user-attachments/assets/1ac181a8-6e2a-469d-b973-7df421cf8c14" />
-* **Caption:** [Complete Board before beginning the tasks]
+
+* **Caption:** Complete Board before beginning the tasks
 
 <img width="1432" height="683" alt="image" src="https://github.com/user-attachments/assets/b0512c84-7d22-46a1-9310-0c9118f6b52a" />
-* **Caption:** [Day 1 Board - Before beginning the tasks]
+
+* **Caption:** Day 1 Board - Before beginning the tasks
 
 <img width="1051" height="910" alt="image" src="https://github.com/user-attachments/assets/46f84e06-b3b4-4ede-9ef8-96b4cdaf4863" />
-* **Caption:** [Final board after completing all the issues and milestones]
+
+* **Caption:** Final board after completing all the issues and milestones
 
 ### C. Branching Architecture
 *Provide a screenshot showing your local or remote Git branch list, highlighting your use of conventional, issue-linked naming patterns (e.g., `feat/`, `fix/`, `style/`).*
@@ -101,7 +102,7 @@ The project followed a feature-branch workflow where work was completed on separ
 
 <img width="938" height="901" alt="image" src="https://github.com/user-attachments/assets/f6142278-43cc-41b2-a65f-66c79a45c302" />
 
-* **Caption:** [Pull request successfully merged into main and linked directly to Issue #16 (Complete submission.md), demonstrating traceability between project planning, implementation, and integration activities.] 
+* **Caption:** Pull request successfully merged into main and linked directly to Issue #16 (Complete submission.md), demonstrating traceability between project planning, implementation, and integration activities.
 
 ---
 
@@ -113,9 +114,9 @@ You must engineer **three merge conflicts**, each triggered by a **different cau
 
 ---
 
-### Conflict 1 — Full Chronology
+### Conflict 1 - Full Chronology
 
-**What cause did you use?** Same-line content conflict — two branches independently modified the same `<h1>` element in `index.html`.
+**What cause did you use?** Same-line content conflict - two branches independently modified the same `<h1>` element in `index.html`.
 
 #### Step 1: Generating the Clash
 *Screenshot showing the merge attempt and the conflict warning.*
@@ -124,6 +125,7 @@ You must engineer **three merge conflicts**, each triggered by a **different cau
 
 
 * **Caption:** Branches `fix/15-conflict-demo-a` and `fix/15-conflict-demo-b` modified the same `<h1>` line independently. Merging `main` into `fix/15-conflict-demo-b` produced a content conflict that required manual resolution.
+
 #### Step 2: Inside the Code Editor (Conflict Markers)
 *Screenshot showing the raw, unresolved conflict markers (`<<<<<<< HEAD`, `=======`, `>>>>>>>`) in your editor.*
 
@@ -137,13 +139,13 @@ You must engineer **three merge conflicts**, each triggered by a **different cau
 <img width="1622" height="902" alt="image" src="https://github.com/user-attachments/assets/40ed0d1f-d165-409a-bb3d-828a829c75af" />
 
 
-* **Caption:** After resolving the content conflict, the changes were committed (`fix(conflict): resolve merge collision`), linked to Issue #15, and successfully merged into `main`. The pull request was closed and the feature branch was deleted after integration.
+* **Caption:** After resolving the content conflict, the changes were committed (`fix(conflict): resolve merge collision`), linked to Issue #15, and successfully merged into `main`. The pull request was closed, and the feature branch was deleted after integration.
 
 ---
 
 ### Conflict 2 — Different Cause
 
-**What cause did you use?** Add/add conflict — two branches independently created a file named `NOTES.md` with different contents.
+**What cause did you use?** Add/add conflict - two branches independently created a file named `NOTES.md` with different contents.
 
 **Why does this cause trigger a conflict?** Two branches independently created `NOTES.md` with different contents. Because both branches added the file without a common version to reconcile, Git produced an add/add conflict requiring manual resolution.
 
