@@ -1,1 +1,1 @@
-This project is built entirely with vanilla JavaScript,with no external frameworks or build tools.
+This project relies entirely on the browser's native LocalStorage APIs for data persistence.
