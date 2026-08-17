@@ -31,7 +31,8 @@ Paste the URL of the commit in your history that you think best demonstrates cle
 
 Link to a commit, PR, or issue where something went wrong — a bad commit message you had to fix, a branch you had to delete and recreate, a PR that needed rework, or a deployment that broke. 
 
-- **Link to the evidence:** 
+- **Link to the evidence:**
+  
 conflict title a - [https://github.com/IS-PROJECT-2026/habit-streak-tracker-166289/pull/36]
 
 conflict title b - [https://github.com/IS-PROJECT-2026/habit-streak-tracker-166289/pull/35]
@@ -65,14 +66,15 @@ Demonstrate your workflow mechanics by embedding your screenshots below.
 ### A. Milestones and Issues
 *Provide a screenshot showing your active milestone(s) and the granular tracking issues linked directly to them.*
 
-[PASTE YOUR MILESTONE SCREENSHOT DIRECTLY HERE]
+<img width="1112" height="366" alt="image" src="https://github.com/user-attachments/assets/da0969e4-a5c0-42c8-b9b0-ef5a456b6fda" />
+
 
 * **Caption:** [Write a brief sentence describing your milestones here]
 
 ### B. Project Board
 *Provide a screenshot of your GitHub Project Board with your issues organized dynamically across columns (To Do, In Progress, Done).*
 
-[PASTE YOUR PROJECT BOARD SCREENSHOT DIRECTLY HERE]
+
 
 * **Caption:** [Write a brief sentence describing your board state here]
 
