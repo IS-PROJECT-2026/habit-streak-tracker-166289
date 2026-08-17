@@ -1,0 +1,1 @@
+This project relies entirely on the browser's native LocalStorage APIs for data persistence.
