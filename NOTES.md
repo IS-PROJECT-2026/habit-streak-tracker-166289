@@ -1,0 +1,1 @@
+This project is built entirely with vanilla JavaScript,with no external frameworks or build tools.
