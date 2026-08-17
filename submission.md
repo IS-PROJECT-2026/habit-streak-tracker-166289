@@ -181,6 +181,14 @@ To help improve this course for future engineering cohorts, please take 2 minute
 ---
  
 ## Final Submission
+
+
+## GitHub Stats
+
+<img width="849" height="420" alt="image" src="https://github.com/user-attachments/assets/35056f8b-1c2c-4230-90c4-414e91d62409" />
+
+* **Caption:** Github Statistics
+
  
 Once your repository is complete, submit your work through the official submission form below. The form will **stop accepting responses after Monday, August 17th, 2026** — no late submissions will be accepted.
  
